@@ -1,13 +1,13 @@
-const jwt = require('jsonwebtoken');
+const JWT = require('jsonwebtoken');
 
-const secretKey = process.env.JWT_SECRET;
+const secret = process.env.JWT_SECRET;
 
-const jwtConfig = {
+const JWTConfig = {
   algorithm: 'HS256',
 };
 
-const createToken = (payload) => jwt.sign({ payload }, secretKey, jwtConfig);
-const authToken = (token) => jwt.verify(token, secretKey);
+const createToken = (payload) => JWT.sign({ payload }, secret, JWTConfig);
+const authToken = (token) => JWT.verify(token, secret);
 
 module.exports = {
   createToken,

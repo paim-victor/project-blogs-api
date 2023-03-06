@@ -2,13 +2,13 @@ const { authToken } = require('../utils/auth');
 
 const validToken = (req, res, next) => {
   try {
-    const { checkingToken } = req.headers;
+    const { authorization } = req.headers;
 
-    if (!checkingToken) {
-      return res.status(401).send({ message: 'Token not found ' });
+    if (!authorization) {
+      return res.status(401).send({ message: 'Token not found' });
     }
 
-    req.payload = authToken(checkingToken);
+    req.payload = authToken(authorization);
 
     next();
   } catch (error) {

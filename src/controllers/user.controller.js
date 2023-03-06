@@ -20,17 +20,17 @@ const getUserId = async (req, res) => {
 const create = async (req, res) => {
   const user = req.body;
 
-  const emailCheck = await userService.getEmail(user.email);
+  const email = await userService.getEmail(user.email);
 
-  if (emailCheck) {
+  if (email) {
     return res.status(409).json({ message: 'User already registered' });
   }
 
 const newUser = await userService.create(user);
 
-const newToken = createToken(newUser);
+const token = createToken(newUser);
 
-return res.status(201).json({ newToken });
+return res.status(201).json({ token });
 };
 
 const destroy = async (req, res) => {

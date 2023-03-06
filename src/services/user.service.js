@@ -12,13 +12,10 @@ const getPassword = (password) => User.findOne({ where: { password } });
 
 const create = (user) => User.create(user);
 
-const detroy = (id) => User.destroy({ where: { id } });
-
   module.exports = {
     getUsers,
     getUserId,
     getEmail,
     getPassword,
     create,
-    detroy,
   };
